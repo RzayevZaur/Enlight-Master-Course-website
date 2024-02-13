@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+      
+      <section class="probootstrap-section probootstrap-section-colored">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-left section-heading probootstrap-animate">
+              <h1 class="mb0">Contact Us</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section class="probootstrap-section probootstrap-section-sm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row probootstrap-gutter0">
+                <div class="col-md-4" id="probootstrap-sidebar">
+                  <div class="probootstrap-sidebar-inner probootstrap-overlap probootstrap-animate">
+                    <h3>Pages</h3>
+                    <ul class="probootstrap-side-menu">
+                      
+                      <li><a href="{% url 'Index_name' %}">Home</a></li>
+                      <li><a href="{% url 'course_name' %}">Courses</a></li>
+                      <li><a href="{% url 'Teacher_name' %}">Teachers</a></li>
+                      <li><a href="{% url 'events_name' %}">Events</a></li>
+                      <li><a href="{% url 'About_name' %}">About Us</a></li>
+                      <li class="active"><a>Contact Us</a></li>
+                    </ul>
+                  </div>
+
+                
+                </div>
+                <div class="col-md-7 col-md-push-1  probootstrap-animate" id="probootstrap-content">
+                  <h2>Get In Touch</h2>
+                  <p>Contact us using the form below.</p>
+                  <form action="#" method="POST" class="probootstrap-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="name">name</label>
+                     {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      {{ form.Email }}
+                    </div>    
+                    <div class="form-group">
+                      <label for="subject">Subject</label>
+                      {{ form.Subject }}
+                    </div>
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      {{ form.Message }}
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Send Message">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+
+{% endblock %}

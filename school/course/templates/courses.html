@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+
+<section class="probootstrap-section probootstrap-section-colored">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-left section-heading probootstrap-animate">
+        <h1>Our Courses</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+      {% for i in course_video_views %}
+      <div class="col-md-12">
+        
+        <div class="probootstrap-flex-block">
+          
+          <div class="probootstrap-text probootstrap-animate">
+            <div class="text-uppercase probootstrap-uppercase">{{ i.courses_name }}</div>
+            <h3>{{ i.title2 }}</h3>
+            <p>{{ i.description|truncatechars:310|safe }}</p>
+            
+               </span></p>
+          </div>
+          <!-- {% for i in course_video_views %}
+          <div class="probootstrap-image probootstrap-animate" style="background-image: url(img/slider_4.jpg)">
+            <video class="btn-video popup-vimeo" controls  loop src="{{ i.video.url }}"></video>
+          </div>
+          
+          {% endfor %} -->
+          
+          <div class="probootstrap-image probootstrap-animate" style="background-image: url(img/slider_4.jpg)">
+            <video id="video{{ forloop.counter }}" class="btn-video popup-vimeo" controls loop src="{{ i.video.url }}"></video>
+          </div>
+      
+        
+        <script src="video_init.js"></script>
+        
+
+        </div>
+     
+      </div>
+     
+    </div>
+    {% endfor %}
+  </div>
+</section>
+ 
+<section class="probootstrap-section"  > 
+  <div class="container">
+    <div class="row">
+      {% for i in course_views %}
+      <div class="col-md-6">
+       
+        <div class="probootstrap-service-2 probootstrap-animate">
+          <div class="image">
+            <div class="image-bg">
+              <img width="200px" src="{{ i.img.url }}" alt="">
+            </div>
+          </div>
+          <div class="text">
+            <span class="probootstrap-meta"><i class="">{{ i.name }}</i> </span>
+            <h3>{{ i.course }}</h3>
+            <p>{{i.description|truncatechars:150|safe}}</p>
+            <p><a href="{% url 'course_single_name' pk=i.pk  %}" class="btn btn-primary">Enroll now</a> <span
+                class="enrolled-count">2,928 students enrolled</span></p>
+          </div>
+        </div>
+       
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+        <h2>Meet Our Qualified Teachers</h2>
+        <p class="lead">Sed a repudiandae impedit voluptate nam Deleniti dignissimos perspiciatis nostrum porro nesciunt
+        </p>
+      </div>
+    </div>
+    <!-- END row -->
+
+    <div class="row">
+      {% for i in teacher_views %}
+      <div class="col-md-3 col-sm-6">
+        <div class="probootstrap-teacher text-center probootstrap-animate">
+          <figure class="media">
+            <img  src="{{ i.img.url }}" alt="Free Bootstrap Template by ProBootstrap.com" class="img-responsive">
+          </figure>
+          <div class="text">
+            <a href="{% url 'Teacher_single_name' pk=i.pk  %}"><h3>{{ i.fullname }}</h3></a>
+            <p>{{ i.course }}</p>
+            <ul class="probootstrap-footer-social">
+              <li class="twitter"><a href="{{ i.twitter_field }}"><i class="icon-twitter"></i></a></li>
+              <li class="facebook"><a href="{{ i.facebook_field }}"><i class="icon-facebook2"></i></a></li>
+              <li class="instagram"><a href="{{ i.instaqram_field }}"><i class="icon-instagram2"></i></a></li>
+              <li class="google-plus"><a href="{{ i.gmail_field }}"><i class="icon-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="clearfix visible-sm-block visible-xs-block"></div>
+     
+     
+    </div>
+
+
+    <button>
+     <a href="{% url 'Teacher_name' %}" style="color: aliceblue;"> Sign up</a>
+      <div class="arrow-wrapper">
+          <div class="arrow"></div>
+  
+      </div>
+  </button>  
+  </div>
+
+</section>
+
+{% endblock %}
